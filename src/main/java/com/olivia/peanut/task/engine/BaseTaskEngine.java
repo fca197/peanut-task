@@ -1,7 +1,6 @@
 package com.olivia.peanut.task.engine;
 
 import cn.hutool.core.collection.CollUtil;
-import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.olivia.peanut.task.api.entity.taskDef.TaskStartReq;
 import com.olivia.peanut.task.engine.entity.TaskInfoDef;
@@ -25,6 +24,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+import shade.com.alibaba.fastjson2.JSON;
 
 import java.time.LocalDate;
 import java.util.List;

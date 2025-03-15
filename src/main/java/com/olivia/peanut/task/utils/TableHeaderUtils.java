@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 public class TableHeaderUtils {
   public static <T> void loadHeaderList(DynamicsPage<?> page, String bizKey) {
     try {
-      Class<?> headerServiceClass = Class.forName("com.olivia.peanut.portal.service.BaseTableHeaderService");
+      Class<?> headerServiceClass = Class.forName("com.olivia.peanut.base.service.BaseTableHeaderService");
       Object headerService = SpringUtil.getBean(headerServiceClass);
       ReflectUtil.invoke(headerService, "listByBizKey", page, bizKey);
     } catch (Exception e) {

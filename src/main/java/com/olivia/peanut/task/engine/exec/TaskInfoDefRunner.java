@@ -2,7 +2,6 @@ package com.olivia.peanut.task.engine.exec;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.extra.spring.SpringUtil;
-import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.googlecode.aviator.AviatorEvaluator;
@@ -15,6 +14,7 @@ import com.olivia.peanut.task.model.TaskInstanceHistory;
 import com.olivia.peanut.task.service.TaskInstanceHistoryService;
 import com.olivia.sdk.utils.$;
 import com.olivia.sdk.utils.BaseEntity;
+import com.olivia.sdk.utils.JSON;
 import com.olivia.sdk.utils.RunUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,7 +74,7 @@ public class TaskInfoDefRunner implements Runnable {
       TaskInstanceHistory lastHistory = getLastTaskHistory(taskInstanceHistoryService);
       String taskOutput = $.firstNotNull(lastHistory.getTaskOutput(), "{}");
       log.info("lastTaskInstanceId {} taskOutput:{}", lastTaskInstanceId, taskOutput);
-      Map<String, Object> lastOutMap = JSON.parseObject(taskOutput);
+      Map<String, Object> lastOutMap = JSON.readValue(taskOutput);
 
       // 映射输入数据
       mappingDataMap(lastOutMap, currentTaskInfoDef.getInputMappingList());

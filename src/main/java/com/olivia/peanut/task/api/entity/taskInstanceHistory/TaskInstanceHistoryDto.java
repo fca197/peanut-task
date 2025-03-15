@@ -1,6 +1,5 @@
 package com.olivia.peanut.task.api.entity.taskInstanceHistory;
 
-import com.alibaba.fastjson2.annotation.JSONField;
 import com.olivia.peanut.portal.api.entity.BaseEntityDto;
 import com.olivia.sdk.ann.InsertCheck;
 import com.olivia.sdk.ann.UpdateCheck;
@@ -25,14 +24,14 @@ public class TaskInstanceHistoryDto extends BaseEntityDto {
   /***
    *  实例ID
    */
-  @JSONField(label = "instanceId")
+  //@JSONField(label = "instanceId")
   @NotNull(message = "实例ID不能为空", groups = {InsertCheck.class, UpdateCheck.class})
 
   private Long instanceId;
   /***
    *  任务ID
    */
-  @JSONField(label = "taskId")
+  //@JSONField(label = "taskId")
   @NotNull(message = "任务ID不能为空", groups = {InsertCheck.class, UpdateCheck.class})
 
   private Long taskId;
@@ -42,41 +41,41 @@ public class TaskInstanceHistoryDto extends BaseEntityDto {
    *  任务节点ID
    */
   @NotBlank(message = "任务节点ID不能为空", groups = {InsertCheck.class, UpdateCheck.class})
-  @JSONField(label = "taskDefId")
+  //@JSONField(label = "taskDefId")
 
   private String taskDefId;
   /***
    *  入参
    */
   @NotBlank(message = "入参不能为空", groups = {InsertCheck.class, UpdateCheck.class})
-  @JSONField(label = "taskInput")
+  //@JSONField(label = "taskInput")
 
   private String taskInput;
   /***
    *  返回值
    */
   @NotBlank(message = "返回值不能为空", groups = {InsertCheck.class, UpdateCheck.class})
-  @JSONField(label = "taskOutput")
+  //@JSONField(label = "taskOutput")
 
   private String taskOutput;
   /***
    *  执行状态
    */
   @NotBlank(message = "执行状态 不能为空", groups = {InsertCheck.class, UpdateCheck.class})
-  @JSONField(label = "taskExecStatus")
+  //@JSONField(label = "taskExecStatus")
 
   private String taskExecStatus;
   /***
    *  异常描述
    */
   @NotBlank(message = "异常描述不能为空", groups = {InsertCheck.class, UpdateCheck.class})
-  @JSONField(label = "exceptionMsg")
+  //@JSONField(label = "exceptionMsg")
 
   private String exceptionMsg;
   /***
    *  耗时
    */
-  @JSONField(label = "useTime")
+  //@JSONField(label = "useTime")
   @NotNull(message = "耗时不能为空", groups = {InsertCheck.class, UpdateCheck.class})
 
   private Long useTime;

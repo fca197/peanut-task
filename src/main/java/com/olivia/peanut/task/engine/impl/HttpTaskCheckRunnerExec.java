@@ -1,9 +1,6 @@
 package com.olivia.peanut.task.engine.impl;
 
 import cn.hutool.core.util.BooleanUtil;
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
-import com.alibaba.fastjson2.TypeReference;
 import com.google.common.collect.Lists;
 import com.olivia.peanut.task.engine.entity.TaskCheckRunnerReq;
 import com.olivia.peanut.task.engine.entity.TaskInfoDef;
@@ -12,6 +9,7 @@ import com.olivia.peanut.task.engine.exec.TaskCheckRunnerExec;
 import com.olivia.peanut.task.model.TaskInstanceHistory;
 import com.olivia.sdk.exception.RunException;
 import com.olivia.sdk.model.KVEntity;
+import com.olivia.sdk.utils.JSON;
 import com.olivia.sdk.utils.RunUtils;
 import com.olivia.sdk.utils.Str;
 import com.olivia.sdk.utils.ValueUtils;
@@ -84,8 +82,9 @@ public class HttpTaskCheckRunnerExec implements TaskCheckRunnerExec {
     Long taskId = currentTaskInstanceHistory.getId();
     log.debug("check instanceId : {}  taskInstanceId: {} response :{}", currentTaskInstanceHistory.getInstanceId(), taskId, body);
 
-    Map<String, Object> retMap = JSONObject.parseObject(response.body(), new TypeReference<Map<String, Object>>() {
-    }.getType());
+    Map<String, Object> retMap =JSON.readValue(response.body());
+//        JSONObject.parseObject(response.body(), new TypeReference<Map<String, Object>>() {
+//    }.getType());
     if (BooleanUtil.toBoolean(String.valueOf(retMap.get("data")))) {
       RunUtils.run("任务检查成功，执行下一个任务 " + taskId, req.getSuccessRun());
     } else {

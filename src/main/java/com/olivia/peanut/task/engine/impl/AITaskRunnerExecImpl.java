@@ -4,6 +4,7 @@ import cn.hutool.extra.spring.SpringUtil;
 import com.google.common.collect.Lists;
 import com.olivia.peanut.task.engine.entity.ExecTaskReq;
 import com.olivia.peanut.task.engine.entity.TaskInfoDef;
+import com.olivia.peanut.task.engine.exec.AITaskBeanExec;
 import com.olivia.peanut.task.engine.exec.TaskRunnerExec;
 import com.olivia.peanut.task.exec.impl.DouBaoAITaskBeanExec;
 import com.olivia.sdk.exception.RunException;
@@ -20,7 +21,7 @@ import java.util.Map;
 @Getter
 @Accessors(chain = true)
 @Component("ai" + "TaskRunnerExec")
-public class AITaskRunnerExec implements TaskRunnerExec {
+public class AITaskRunnerExecImpl implements TaskRunnerExec {
   @Override
   public KVEntity getTaskRunnerExecName() {
     return KVEntity.of(Str.DEFAULT_ZN, Str.DEFAULT).setChildrenList(Lists.newArrayList(KVEntity.of("AI", "AI")));
@@ -33,7 +34,7 @@ public class AITaskRunnerExec implements TaskRunnerExec {
     }
     TaskInfoDef taskInfoDef = req.getCurrentTaskInfoDef();
     String taskAiName = taskInfoDef.getTaskAiName();
-    DouBaoAITaskBeanExec taskBeanExec = SpringUtil.getBean(taskAiName, DouBaoAITaskBeanExec.class);
+    AITaskBeanExec taskBeanExec = SpringUtil.getBean(taskAiName, AITaskBeanExec.class);
     return taskBeanExec.exec(req);
   }
 }
