@@ -7,7 +7,11 @@
 
 ## 模块功能如下：
 
-![task_model.png](./doc/image/task_model.png)
+![task_model.png](doc/image/task_model.png)
+
+# 任务引擎实现
+
+![task_model.png](./doc/image/task_engine.png)
 
 # 项目说明
 
