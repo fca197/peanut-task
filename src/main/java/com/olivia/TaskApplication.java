@@ -1,11 +1,13 @@
 package com.olivia;
 
+import com.olivia.sdk.condition.ApplicationStartCondition;
 import com.olivia.sdk.config.ServiceNotice;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -20,6 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
 @EnableTransactionManagement
+@Conditional(ApplicationStartCondition.class)
 public class TaskApplication {
 
 
